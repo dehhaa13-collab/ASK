@@ -10,7 +10,7 @@ const spinner = document.querySelector('.spinner');
 
 // СЮДА ВСТАВИТЬ URL ВЫПОЛНЕНОГО СКРИПТА GOOGLE APPS SCRIPT
 // Если оставить пустым, форма симулирует успешную отправку
-const SCRIPT_URL = '';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyJdZayEkqZIX6DI6HK5KDwdSUOe8r3jcGJjQUFrrg96gw1z31A4vS6pQYs-23lAOTErg/exec';
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
