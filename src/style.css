@@ -1,17 +1,17 @@
 :root {
-  --bg-color: #0d1117;
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --primary: #5c6bc0;
-  --primary-hover: #7986cb;
+  --bg-color: #0d0603;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --primary: #d84315;
+  --primary-hover: #ff6d00;
   --text-main: #f0f6fc;
-  --text-muted: #8b949e;
-  --input-bg: rgba(13, 17, 23, 0.7);
+  --text-muted: #b0b0b0;
+  --input-bg: rgba(20, 10, 5, 0.7);
   --input-border: rgba(255, 255, 255, 0.15);
-  --focus-glow: rgba(92, 107, 192, 0.5);
-  --blob-1: #5c6bc0;
-  --blob-2: #8e24aa;
-  --blob-3: #1a237e;
+  --focus-glow: rgba(230, 81, 0, 0.5);
+  --blob-1: #bf360c;
+  --blob-2: #d84315;
+  --blob-3: #ff6d00;
 }
 
 * {
@@ -124,23 +124,35 @@ body {
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-#form-container header {
+#form-container .brand-header {
   text-align: center;
   margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-header h1 {
-  font-size: 1.7rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-  letter-spacing: -0.02em;
-  line-height: 1.3;
+.brand-header h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: #fff;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
 }
 
-header p {
-  color: var(--text-muted);
+.subtitle-pill {
+  background: linear-gradient(90deg, #d84315, #ff6d00);
+  color: #fff;
   font-size: 0.95rem;
-  line-height: 1.5;
+  font-weight: 600;
+  padding: 0.7rem 1.7rem;
+  border-radius: 50px;
+  line-height: 1.4;
+  box-shadow: 0 4px 20px rgba(230, 81, 0, 0.4);
+  max-width: 95%;
 }
 
 /* Стили формы */
@@ -396,17 +408,18 @@ textarea {
     border-radius: 20px;
   }
   
-  #form-container header {
-    margin-bottom: 1.75rem;
+  #form-container .brand-header {
+    margin-bottom: 2rem;
   }
 
-  header h1 {
-    font-size: 1.35rem;
-    margin-bottom: 0.5rem;
+  .brand-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1.25rem;
   }
 
-  header p {
+  .subtitle-pill {
     font-size: 0.85rem;
+    padding: 0.6rem 1.2rem;
   }
   
   .input-group {
@@ -451,8 +464,13 @@ textarea {
     padding: 1.25rem 0.75rem;
   }
 
-  header h1 {
-    font-size: 1.2rem;
+  .brand-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .subtitle-pill {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
   }
   
   .card-content {
