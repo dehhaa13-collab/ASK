@@ -390,10 +390,17 @@ textarea {
   .blob.blob-1 {
     width: 300px;
     height: 300px;
+    animation-duration: 12s;
   }
   .blob.blob-2 {
     width: 400px;
     height: 400px;
+    animation-duration: 14s;
+  }
+  .blob.blob-3 {
+    width: 350px;
+    height: 350px;
+    animation-duration: 10s;
   }
 }
 
