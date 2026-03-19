@@ -53,8 +53,8 @@ form.addEventListener('submit', async (e) => {
     }, 400); // 400мс - длительность CSS transition
     
   } catch (error) {
-    console.error('Ошибка при отправке!', error);
-    alert('Произошла ошибка сети. Пожалуйста, попробуйте позже.');
+    console.error('Помилка при відправленні!', error);
+    alert('Сталася помилка мережі. Будь ласка, спробуйте пізніше.');
   } finally {
     // Возвращаем кнопку в исходное состояние
     btnText.classList.remove('hide');
