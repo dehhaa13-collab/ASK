@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Заявка на сотрудничество</title>
+    <!-- Подключаем современный шрифт Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Анимированные фоновые элементы -->
+      <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+      </div>
+
+      <!-- Контейнер с формой (Glassmorphism) -->
+      <div class="glass-container" id="form-container">
+        <header>
+          <h1>Оставьте заявку — подберём решение под ваш запрос</h1>
+          <p>Поможем разобраться с задачей и предложим оптимальный план действий.</p>
+        </header>
+
+        <form id="lead-form" class="lead-form">
+          <div class="input-group">
+            <label for="name">Как к вам обращаться?</label>
+            <input type="text" id="name" name="name" placeholder="Иван" required>
+          </div>
+
+          <div class="input-group">
+            <label for="contact">Ваш телефон или Telegram для связи</label>
+            <input type="text" id="contact" name="contact" placeholder="+7 (999) 000-00-00 или @username" required>
+          </div>
+
+          <div class="input-group">
+            <label for="task">Какая основная задача или проблема сейчас?</label>
+            <textarea id="task" name="task" rows="3" placeholder="Опишите ситуацию в свободной форме..."></textarea>
+          </div>
+
+          <div class="input-group">
+            <p class="label-text">Готовы ли вы рассматривать сотрудничество в ближайшее время?</p>
+            <div class="radio-group">
+              <label class="radio-card">
+                <input type="radio" name="readiness" value="Да, сейчас актуально" required>
+                <span class="card-content">✅ Да, сейчас актуально</span>
+              </label>
+              
+              <label class="radio-card">
+                <input type="radio" name="readiness" value="Изучаю варианты">
+                <span class="card-content">🔍 Изучаю варианты</span>
+              </label>
+              
+              <label class="radio-card">
+                <input type="radio" name="readiness" value="На будущее">
+                <span class="card-content">📅 На будущее</span>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" id="submit-btn" class="primary-btn">
+            <span class="btn-text">Отправить заявку</span>
+            <div class="spinner hide"></div>
+          </button>
+        </form>
+      </div>
+
+      <!-- Экран успешной отправки -->
+      <div class="glass-container success-container hide" id="success-container">
+        <div class="success-icon">✨</div>
+        <h2>Спасибо! Ваша заявка принята.</h2>
+        <p>Свяжемся с вами в ближайшее время для обсуждения деталей.</p>
+        <button id="reset-btn" class="secondary-btn">Вернуться</button>
+      </div>
+    </div>
+    
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

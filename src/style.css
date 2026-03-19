@@ -1,0 +1,430 @@
+:root {
+  --bg-color: #0d1117;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --primary: #5c6bc0;
+  --primary-hover: #7986cb;
+  --text-main: #f0f6fc;
+  --text-muted: #8b949e;
+  --input-bg: rgba(13, 17, 23, 0.7);
+  --input-border: rgba(255, 255, 255, 0.15);
+  --focus-glow: rgba(92, 107, 192, 0.5);
+  --blob-1: #5c6bc0;
+  --blob-2: #8e24aa;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  padding: 1rem;
+}
+
+/* Фоновые анимированные сферы */
+.background-blobs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.5;
+  animation: float 10s infinite alternate cubic-bezier(0.5, 0.1, 0.5, 0.9);
+}
+
+.blob-1 {
+  top: 10%;
+  left: 10%;
+  width: 400px;
+  height: 400px;
+  background: var(--blob-1);
+}
+
+.blob-2 {
+  bottom: 10%;
+  right: 10%;
+  width: 500px;
+  height: 500px;
+  background: var(--blob-2);
+  animation-delay: -5s;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+.app-container {
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+  /* Для того, чтобы success screen мог позиционироваться внутри app-container */
+  min-height: 500px; 
+}
+
+/* Glassmorphism Контейнеры */
+.glass-container {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+#form-container header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+header h1 {
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+header p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Стили формы */
+.lead-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.input-group label, .label-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-main);
+  opacity: 0.95;
+}
+
+input[type="text"], textarea {
+  width: 100%;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 12px;
+  padding: 1rem;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+input[type="text"]:focus, textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--focus-glow);
+  background: rgba(13, 17, 23, 0.9);
+}
+
+input[type="text"]::placeholder, textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Карточки радио-кнопок */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.radio-card {
+  position: relative;
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.radio-card:active {
+  transform: scale(0.98);
+}
+
+.radio-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 12px;
+  padding: 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.radio-card:hover .card-content {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.radio-card input:checked ~ .card-content {
+  background: rgba(92, 107, 192, 0.15);
+  border-color: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 0 15px var(--focus-glow);
+}
+
+/* Кнопки */
+.primary-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 1.1rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(92, 107, 192, 0.3);
+}
+
+.primary-btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(92, 107, 192, 0.5);
+}
+
+.primary-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.secondary-btn {
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 0.8rem 1.75rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: all 0.3s;
+}
+
+.secondary-btn:hover {
+  background: var(--glass-bg);
+  border-color: var(--text-muted);
+}
+
+/* Утилиты отображения и анимации */
+.hide {
+  display: none !important;
+}
+
+.fade-out {
+  opacity: 0 !important;
+  transform: scale(0.97) translateY(-10px);
+  pointer-events: none;
+}
+
+.fade-in {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+.success-container.fade-in {
+  opacity: 1 !important;
+  transform: translateY(-50%) scale(1) !important;
+}
+
+/* Экран успеха */
+.success-container {
+  /* Перекрываем форму */
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%) scale(0.95); /* Центрирование */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0; 
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.success-icon {
+  font-size: 4.5rem;
+  margin-bottom: 1rem;
+  animation: pop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+#success-container h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.75rem;
+}
+
+#success-container p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+@keyframes pop {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Спиннер загрузки */
+.spinner {
+  width: 22px;
+  height: 22px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Мобильная адаптивность */
+
+/* Планшеты (до 768px) */
+@media (max-width: 768px) {
+  .blob.blob-1 {
+    width: 300px;
+    height: 300px;
+  }
+  .blob.blob-2 {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+/* Стандартные смартфоны (до 480px) */
+@media (max-width: 480px) {
+  body {
+    padding: 0.5rem; /* Меньше отступов от краев экрана */
+  }
+
+  .glass-container {
+    padding: 1.5rem 1rem;
+    border-radius: 20px;
+  }
+  
+  #form-container header {
+    margin-bottom: 1.75rem;
+  }
+
+  header h1 {
+    font-size: 1.35rem;
+    margin-bottom: 0.5rem;
+  }
+
+  header p {
+    font-size: 0.85rem;
+  }
+  
+  .input-group {
+    gap: 0.4rem;
+  }
+  
+  .input-group label, .label-text {
+    font-size: 0.85rem;
+  }
+  
+  input[type="text"], textarea {
+    padding: 0.9rem;
+  }
+
+  .primary-btn {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .card-content {
+    padding: 0.9rem;
+    font-size: 0.9rem;
+  }
+
+  .success-icon {
+    font-size: 3.5rem;
+  }
+
+  #success-container h2 {
+    font-size: 1.4rem;
+  }
+
+  #success-container p {
+    font-size: 0.9rem;
+    padding: 0 0.5rem;
+  }
+}
+
+/* Маленькие смартфоны: iPhone SE и др. (до 375px) */
+@media (max-width: 375px) {
+  .glass-container {
+    padding: 1.25rem 0.75rem;
+  }
+
+  header h1 {
+    font-size: 1.2rem;
+  }
+  
+  .card-content {
+    font-size: 0.85rem;
+    padding: 0.75rem;
+  }
+}
